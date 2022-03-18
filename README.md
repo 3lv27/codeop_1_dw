@@ -15,20 +15,28 @@ In this project, you'll apply what you've learned on data modeling with Postgres
 - Docker compose
 
 ### The project
-To start the project you will need to enter the following command in the root of the project: `docker-compose up`
+To start the project you will need to enter the following command in the root of the project: <br> `docker-compose up` <br>
 This will start a PostgreSQL database and a Jupyter Lab with all the dependencies you need to start working with your project (sqalchemy, psycopg2, ipython-sql, pandas..), everything is already setup for you.
+Whenever you want to bring down the containers don't forget to `docker-compose down`.
 
 `get_started.ipynb` => In this notebook you will find a couple of helper functions:<br>
  - `create_dbs()` will create ,safely, the databases you need to accomplish the task. 
  - `get_db(db_name)` => will return a cursor and a connection to the database you choose. That's everything you need to interact with the db.
 
-There's also a few lines of code to inspire in case you don't know where to start.
+ There's also a few lines of code to inspire in case you don't know where to start.
+
+ Inside the **data/** folder you will find all the files with the data needed to start coding. So the first step will be bring all the data in those files into our operational db in a normalize manner. Once we have our operational db set up we can start the denormalization process to build our datawarehouse.
+
+ Hint: We need to end up with a start schema in our dw.
+ Important: The final goal is to create a dw with a star schema so don't lose too much time normalizing the data into the operational db. It is ok if the data is not completely normalize. What it is important is the final result in the datawarehouse which is the purpose of this lesson.
+
+
 
 ## The deliverable
 
 ### Python scripts
 
-- create_tables.py: Clean previous schema and creates tables.
+- create_tables.py: Creates all the tables.
 - sql_queries.py: All queries used in the ETL pipeline. (optional)
 - etl.py: Read JSON and CSV files and load the normalized data into generated tables inside the operational db.
 - etl_dw.py: Read from the operational db and transform the data into a star schema inside our datawarehouse.
